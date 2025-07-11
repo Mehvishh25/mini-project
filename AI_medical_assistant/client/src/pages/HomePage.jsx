@@ -4,8 +4,6 @@ function HomePage() {
     <main>
       <HeroSection />
       <hr className="text-teal-600 mt-15" />
-      <ServicesSection />
-      <AboutSection />
     </main>
   );
 }

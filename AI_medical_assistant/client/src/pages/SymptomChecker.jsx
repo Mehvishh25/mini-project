@@ -50,65 +50,88 @@ function SymptomChecker() {
   };
 
   return (
-    <main className="m-10 md:m-30 md:-mt-0.5">
-      <ServiceHeader
-        phrase={"Let AI evaluate your Symptoms and Predict your possible"}
-        spanPhrase={"Disease"}
-        para={"Enter your symptoms to get an AI-based prediction of your potential condition, with suggestions on care, diet, and more."}
-      />
-
-      <form className="space-y-5 my-8" onSubmit={handleSubmit}>
-        <h3 className="text-teal-700 text-center text-2xl font-semibold mt-8 mb-6 lg:text-4xl">
-          Select your Symptoms
-        </h3>
-
-        <div className="max-w-3xl mx-auto">
-          <Select
-            options={options}
-            isMulti
-            onChange={setSelectedOptions}
-            placeholder="Type or select symptoms..."
-            className="mb-4 text-black"
-          />
+    <div className="min-h-screen bg-white">
+      <section className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center mb-10">
+        <img
+          src="https://images.pexels.com/photos/6029056/pexels-photo-6029056.jpeg"
+          alt="Symptom Checker"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-green-900/60" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
+            Symptom Checker
+          </h1>
+          <p className="max-w-3xl text-white/90 text-base md:text-md font-normal drop-shadow">
+            Select your symptoms and let our AI provide a preliminary disease prediction and helpful recommendations. <br className="hidden md:block" />
+            <span className="text-green-200 font-semibold">Note:</span> This tool is for informational purposes and does not replace professional medical advice.
+          </p>
         </div>
-
-        <div className="flex items-center justify-center">
-          <button
-            type="submit"
-            disabled={loading}
-            className="py-2 px-6 bg-teal-600 shadow hover:bg-teal-700 text-white font-bold rounded-lg transition duration-200"
-          >
-            {loading ? "Predicting..." : "Predict"}
-          </button>
-        </div>
-      </form>
-
-      <h3 className="text-teal-700 text-center text-2xl font-semibold mt-8 mb-6 lg:text-4xl">
-        Evaluation of your Symptoms
-      </h3>
-
-      <div className="ai-response-container bg-gradient-to-br from-blue-900 via-teal-600 to-blue-900 rounded-xl p-5 my-6 max-h-[500px] overflow-y-auto">
-        {prediction ? (
-          prediction.error ? (
-            <p className="text-center text-red-200 font-semibold">{prediction.error}</p>
-          ) : (
-            <div className="flex flex-col items-center text-white">
-              <Card heading={"Predicted Disease:"} para={prediction.disease} />
-
-              <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-6">
-                <Card paraHeading={"Description:"} para={prediction.description} />
-                <Card paraHeading={"Precautions:"} para={prediction.precautions?.join(", ") || "-"} />
-                <Card paraHeading={"Medications:"} para={prediction.medications?.join(", ") || "-"} />
-                <Card paraHeading={"Diets:"} para={prediction.diets?.join(", ") || "-"} />
-                <Card paraHeading={"Workout:"} para={prediction.workout?.join(", ") || "-"} />
-              </div>
+      </section>
+      <section className="flex flex-col justify-center items-center px-6 py-16 min-h-screen">
+        <div className="w-full max-w-4xl flex flex-col bg-white border border-gray-100 rounded-3xl shadow-lg p-10 md:p-16 mb-10 space-y-12">
+          <div className="text-center">
+            <h2 className="text-sm md:text-3xl font-bold text-green-700 mb-6 flex items-center justify-center gap-3">
+              <span className="bg-green-100 rounded-full">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-green-600"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-13h2v6h-2V7Zm0 8h2v2h-2v-2Z" fill="currentColor"/></svg>
+              </span>
+              Symptom Checker Feature
+            </h2>
+            <p className="text-gray-600 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
+              Select your symptoms from the list below and get a quick, AI-powered health evaluation.
+            </p>
+          </div>
+          <form className="space-y-8" onSubmit={handleSubmit}>
+            <div className="max-w-3xl mx-auto">
+              <Select
+                options={options}
+                isMulti
+                onChange={setSelectedOptions}
+                placeholder="Type or select symptoms..."
+                className="mb-4 text-black"
+              />
             </div>
-          )
-        ) : (
-          <h3 className="text-center text-white">The Evaluation will generate here</h3>
-        )}
-      </div>
-    </main>
+            <div className="flex items-center justify-center">
+              <button
+                type="submit"
+                disabled={loading}
+                className="py-3 px-10 bg-green-700 shadow-lg hover:bg-green-800 text-white font-bold rounded-xl transition duration-200 text-lg flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading && (
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
+                )}
+                {loading ? "Predicting..." : "Predict"}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="w-full max-w-4xl bg-white border border-gray-100 rounded-3xl p-10 md:p-16 shadow-lg mt-4 space-y-10">
+          <h3 className="text-green-700 text-center text-2xl font-semibold mb-6 lg:text-3xl">
+            Evaluation of your Symptoms
+          </h3>
+          <div className="ai-response-container">
+            {prediction ? (
+              prediction.error ? (
+                <p className="text-center text-red-500 font-semibold">{prediction.error}</p>
+              ) : (
+                <div className="flex flex-col items-center text-green-900">
+                  <Card heading={"Predicted Disease:"} para={prediction.disease} />
+                  <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-6">
+                    <Card paraHeading={"Description:"} para={prediction.description} />
+                    <Card paraHeading={"Precautions:"} para={prediction.precautions?.join(", ") || "-"} />
+                    <Card paraHeading={"Medications:"} para={prediction.medications?.join(", ") || "-"} />
+                    <Card paraHeading={"Diets:"} para={prediction.diets?.join(", ") || "-"} />
+                    <Card paraHeading={"Workout:"} para={prediction.workout?.join(", ") || "-"} />
+                  </div>
+                </div>
+              )
+            ) : (
+              <h3 className="text-center text-gray-400">The Evaluation will generate here</h3>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 

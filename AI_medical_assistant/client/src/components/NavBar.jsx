@@ -43,11 +43,11 @@ const Navbar = () => {
             </a>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-1">
-            <a href="/" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-green-500'}`}>Home</a>
-            <a href="/about" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-green-500'}`}>About Us</a>
-            <a href="/services" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-green-500'}`}>Services</a>
+            <a href="/" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-gray-300'}`}>Home</a>
+            <a href="/about" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-gray-300'}`}>About Us</a>
+            <a href="/services" className={`group relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-green-700 hover:text-green-500' : 'text-white hover:text-gray-300'}`}>Services</a>
             <a href="/book-appointment" className="group relative overflow-hidden">
-              <span className={`relative z-10 inline-flex items-center justify-center rounded-md border border-transparent px-3 py-1 text-sm font-medium transition-all duration-300 ${scrolled ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-white/20 text-white hover:bg-green-600 hover:text-white'}`}>
+              <span className={`relative z-10 inline-flex items-center justify-center rounded-md border border-transparent px-3 py-1 text-sm font-medium transition-all duration-300 ${scrolled ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-white/20 text-white hover:bg-black/10 hover:text-white'}`}>
                 Contact
               </span>
             </a>
