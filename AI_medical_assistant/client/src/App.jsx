@@ -3,8 +3,6 @@ import { useEffect } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import ServicesSection from './components/ServicesSection'
-import AboutSection from './components/AboutSection'
 import HeroSection from './components/HeroSection'
 import LoginPage from './pages/LoginPage'; 
 import SignUp from './pages/SignUp';
@@ -52,9 +50,6 @@ function App() {
             <>
               <main>
                 <HeroSection />
-                <hr className="text-teal-600 mt-15" />
-                <ServicesSection />
-                <AboutSection />
               </main>
             </>
           }

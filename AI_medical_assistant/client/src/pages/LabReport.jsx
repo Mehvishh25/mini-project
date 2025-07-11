@@ -1,6 +1,5 @@
 import { useState } from "react";
 import AnalysisContainer from "../components/AnalysisContainer";
-import ServiceHeader from "../components/ServiceHeader";
 
 function LabReport() {
   const [file, setFile] = useState(null);
