@@ -27,6 +27,20 @@ function LabReport() {
     setLoading(false);
   };
 
+  const formatResult = (text) => {
+    return text
+      // Convert ### headers to green bold titles
+      .replace(/^###\s*(.*)$/gm, '<span class="text-green-700 font-bold text-lg">$1</span><br /><br />')
+      // Convert **bold** text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      // Bullet points
+      .replace(/^•\s*/gm, '• ')
+      // Paragraph spacing
+      .replace(/\n{2,}/g, '<br /><br />')
+      // Line breaks
+      .replace(/\n/g, '<br />');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -47,13 +61,16 @@ function LabReport() {
           </p>
         </div>
       </section>
+
       {/* Feature Card Section */}
       <section className="flex flex-col justify-center items-center px-6 py-16 min-h-screen">
         <div className="w-full max-w-2xl flex flex-col bg-white border border-gray-100 rounded-3xl shadow-lg p-10 md:p-16 mb-10 space-y-10">
           <div className="text-center">
             <h2 className="text-md md:text-3xl font-bold text-green-700 mb-6 flex items-center justify-center gap-3">
               <span className="bg-green-100 rounded-full">
-                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-green-600"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-13h2v6h-2V7Zm0 8h2v2h-2v-2Z" fill="currentColor"/></svg>
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-green-600">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-13h2v6h-2V7Zm0 8h2v2h-2v-2Z" fill="currentColor"/>
+                </svg>
               </span>
               Lab Report Feature
             </h2>
@@ -61,10 +78,13 @@ function LabReport() {
               Upload a PDF lab report for instant AI-powered analysis and summary.
             </p>
           </div>
+
           <div className="flex flex-col items-center space-y-8">
             <div className="w-full flex flex-col items-center">
               <label className="font-semibold mb-2 text-green-800 flex items-center gap-2">
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" className="text-green-600"><path d="M19 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 18H8V4h8v16Zm-4-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/></svg>
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" className="text-green-600">
+                  <path d="M19 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 18H8V4h8v16Zm-4-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="currentColor"/>
+                </svg>
                 Upload Lab Report (PDF)
               </label>
               <input
@@ -82,6 +102,7 @@ function LabReport() {
                 </div>
               )}
             </div>
+
             <div className="flex justify-center pt-4">
               <button
                 onClick={handleAnalyze}
@@ -99,14 +120,16 @@ function LabReport() {
             </div>
           </div>
         </div>
+
         {result && (
           <div className="w-full max-w-2xl bg-white border border-gray-100 rounded-3xl p-10 md:p-16 shadow-lg mt-8 space-y-8">
             <h3 className="text-green-700 text-center text-2xl font-semibold mb-6 lg:text-3xl">
               Lab Report Analysis Result
             </h3>
-            <div className="bg-gray-50 rounded-xl p-6 text-gray-800 text-lg text-center">
-              {result}
-            </div>
+            <div
+              className="bg-gray-50 rounded-xl p-6 text-gray-800 text-lg text-left"
+              dangerouslySetInnerHTML={{ __html: formatResult(result) }}
+            ></div>
           </div>
         )}
       </section>

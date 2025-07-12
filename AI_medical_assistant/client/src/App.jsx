@@ -1,10 +1,15 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react'
-import './App.css'
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
-import HeroSection from './components/HeroSection'
-import LoginPage from './pages/LoginPage'; 
+import { useEffect } from 'react';
+import './App.css';
+
+// Components
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
+import HeroSection from './components/HeroSection';
+
+// Pages
+import LoginPage from './pages/LoginPage';
 import SignUp from './pages/SignUp';
 import HomePage from './pages/HomePage';
 import XRayScan from './pages/XRayScan';
@@ -14,10 +19,9 @@ import DietCoach from './pages/DietCoach';
 import LabReport from './pages/LabReport';
 import ChatWithDoctor from './pages/ChatWithDoctor';
 import Profile from './pages/Profile';
-import ProtectedRoute from './components/ProtectedRoute';
+import ContactPage from './pages/ContactPage'; // ✅ Newly added
 
-
-
+// Scroll to section behavior
 function ScrollToHashElement() {
   const location = useLocation();
 
@@ -29,7 +33,6 @@ function ScrollToHashElement() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // Scroll to top if no hash
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location]);
@@ -38,20 +41,18 @@ function ScrollToHashElement() {
 }
 
 function App() {
-  
   return (
     <>
-      
-        <NavBar/>
-        <ScrollToHashElement />
-        <Routes>
-        <Route path="/"
+      <NavBar />
+      <ScrollToHashElement />
+
+      <Routes>
+        <Route
+          path="/"
           element={
-            <>
-              <main>
-                <HeroSection />
-              </main>
-            </>
+            <main>
+              <HeroSection />
+            </main>
           }
         />
         <Route path="/LoginPage" element={<LoginPage />} />
@@ -63,18 +64,20 @@ function App() {
         <Route path="/XRayScan" element={<XRayScan />} />
         <Route path="/LabReportAnalysis" element={<LabReport />} />
         <Route path="/DietLifeStyleCoach" element={<DietCoach />} />
-        <Route path="/Profile" element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }/>
-        </Routes>
-        <Footer/>
-      
-      
-    </>
-  )
+        <Route path="/contact" element={<ContactPage />} /> {/* ✅ Contact Page route */}
+        <Route
+          path="/Profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
 
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;

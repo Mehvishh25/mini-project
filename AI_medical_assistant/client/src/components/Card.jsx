@@ -1,21 +1,14 @@
-function Card({ heading, paraHeading, para }) {
+// components/Card.jsx
+export default function Card({ heading, paraHeading, para }) {
   return (
-    <div className="rounded-xl Service-Card m-5 p-5 bg-white shadow-2xl transition-shadow w-80 h-auto">
+    <div className="w-full h-full p-5 border border-gray-200 rounded-xl shadow-md bg-gray-50 flex flex-col justify-start">
       {heading && (
-        <h2 className="text-teal-700 font-bold text-2xl text-center pb-3">
-          {heading}
-        </h2>
+        <h3 className="text-xl font-bold text-green-700 mb-2 text-center">{heading}</h3>
       )}
       {paraHeading && (
-        <h3 className="text-teal-800 -mt-3 font-semibold text-lg pb-3">
-          {paraHeading}
-        </h3>
+        <h4 className="text-md font-semibold text-gray-700 mb-1">{paraHeading}</h4>
       )}
-      <p className="text-gray-800 text-sm text-center whitespace-pre-wrap">
-        {para}
-      </p>
+      <p className="text-sm text-gray-800 whitespace-pre-line">{para}</p>
     </div>
   );
 }
-
-export default Card;

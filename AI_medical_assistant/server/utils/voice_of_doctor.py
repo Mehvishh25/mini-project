@@ -50,7 +50,7 @@ def text_to_speech_with_gtts(input_text, output_filepath):
         input_text = strip_markdown(input_text)
         tts = gTTS(text=input_text, lang="en", slow=False)
         tts.save(output_filepath)
-        play_audio(output_filepath)
+        #play_audio(output_filepath)
         return True
     except Exception as e:
         print(f"🔁 gTTS fallback failed: {e}")
@@ -67,7 +67,7 @@ def text_to_speech_with_elevenlabs(input_text, output_filepath):
             model="eleven_turbo_v2"
         )
         save(audio, output_filepath)
-        play_audio(output_filepath)
+        #play_audio(output_filepath)
         return True
     except Exception as e:
         print(f"⚠️ ElevenLabs error: {e}")

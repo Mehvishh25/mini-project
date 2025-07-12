@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import Card from "../components/Card";
 import axios from "axios";
+import Card from "../components/Card";
 
-// Static symptom options
 const symptoms = [
   "itching", "skin_rash", "nodal_skin_eruptions", "continuous_sneezing", "shivering", "chills",
   "joint_pain", "stomach_pain", "acidity", "ulcers_on_tongue", "muscle_wasting", "vomiting",
@@ -51,6 +50,7 @@ function SymptomChecker() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Hero */}
       <section className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center mb-10">
         <img
           src="https://images.pexels.com/photos/6029056/pexels-photo-6029056.jpeg"
@@ -68,6 +68,8 @@ function SymptomChecker() {
           </p>
         </div>
       </section>
+
+      {/* Feature Section */}
       <section className="flex flex-col justify-center items-center px-6 py-16 min-h-screen">
         <div className="w-full max-w-4xl flex flex-col bg-white border border-gray-100 rounded-3xl shadow-lg p-10 md:p-16 mb-10 space-y-12">
           <div className="text-center">
@@ -105,7 +107,9 @@ function SymptomChecker() {
             </div>
           </form>
         </div>
-        <div className="w-full max-w-4xl bg-white border border-gray-100 rounded-3xl p-10 md:p-16 shadow-lg mt-4 space-y-10">
+
+        {/* Prediction Result */}
+        <div className="w-full max-w-6xl bg-white border border-gray-100 rounded-3xl p-10 md:p-16 shadow-lg mt-4 space-y-10">
           <h3 className="text-green-700 text-center text-2xl font-semibold mb-6 lg:text-3xl">
             Evaluation of your Symptoms
           </h3>
@@ -116,7 +120,7 @@ function SymptomChecker() {
               ) : (
                 <div className="flex flex-col items-center text-green-900">
                   <Card heading={"Predicted Disease:"} para={prediction.disease} />
-                  <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-6">
+                  <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr justify-items-stretch mt-6">
                     <Card paraHeading={"Description:"} para={prediction.description} />
                     <Card paraHeading={"Precautions:"} para={prediction.precautions?.join(", ") || "-"} />
                     <Card paraHeading={"Medications:"} para={prediction.medications?.join(", ") || "-"} />
