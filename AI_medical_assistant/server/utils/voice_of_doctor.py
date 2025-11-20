@@ -10,7 +10,7 @@ from elevenlabs import save
 from elevenlabs.client import ElevenLabs
 
 # ✅ Initialize ElevenLabs client
-ELEVENLABS_API_KEY = "sk_161f4bc426fb081bf48d9719ad280dfc2816896f8a9d10fd"  # Replace with your key
+ELEVENLABS_API_KEY = ""  # Replace with your key
 client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
 
