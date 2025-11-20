@@ -6,7 +6,7 @@ import google.generativeai as genai
 diet_coach_bp = Blueprint("diet_coach", __name__)
 
 # ✅ Gemini API setup
-GOOGLE_API_KEY = "AIzaSyBb0yOnYLBoicKe8SEajKCeMxqqAzneyzI"  # Replace with your actual API key
+GOOGLE_API_KEY = ""  # Replace with your actual API key
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
