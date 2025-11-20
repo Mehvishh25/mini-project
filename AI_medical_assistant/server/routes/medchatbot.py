@@ -4,7 +4,7 @@ import google.generativeai as genai
 medchatbot_bp = Blueprint("medchatbot", __name__)
 
 # Gemini API key config
-genai.configure(api_key="AIzaSyBb0yOnYLBoicKe8SEajKCeMxqqAzneyzI")
+genai.configure(api_key="")
 
 # Start Gemini chat session with no `system` or `context`
 model = genai.GenerativeModel("gemini-1.5-flash")
