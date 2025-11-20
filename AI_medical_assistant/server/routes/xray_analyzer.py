@@ -7,7 +7,7 @@ from agno.media import Image as AgnoImage
 
 xray_analyzer_bp = Blueprint("xray_analyzer", __name__)
 
-GOOGLE_API_KEY = "AIzaSyBb0yOnYLBoicKe8SEajKCeMxqqAzneyzI"
+GOOGLE_API_KEY = ""
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 if not GOOGLE_API_KEY:
