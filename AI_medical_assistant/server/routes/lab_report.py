@@ -8,7 +8,7 @@ import google.generativeai as genai
 lab_report_bp = Blueprint("lab_report", __name__)
 
 # Google Gemini setup
-GOOGLE_API_KEY = "AIzaSyBb0yOnYLBoicKe8SEajKCeMxqqAzneyzI"
+GOOGLE_API_KEY = ""
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 model = genai.GenerativeModel("gemini-1.5-flash")
 
